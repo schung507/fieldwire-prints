@@ -1,0 +1,13 @@
+<li id="project-<%= project.id %>">
+  <span class="content">
+    <p><%= project.name %> | <%= link_to "Delete", project, method: :delete, data: { confirm: "You sure?" } %></p>
+   
+    <% project.floorplans.each do |floorplan| %>
+      <figure style="display: inline-block">
+        <a href="<%= floorplan.url %>" >
+        <%= image_tag floorplan.url(:thumb) + "/thumb_#{File.basename(floorplan.url, File.extname(floorplan.url))}.png"%>
+        <figcaption><%= File.basename(floorplan.url, File.extname(floorplan.url)) %></figcaption>
+      </figure>
+    <% end %>
+  </span>
+</li>
