@@ -5,7 +5,7 @@
     <% project.floorplans.each do |floorplan| %>
       <figure style="display: inline-block">
         <a href="<%= floorplan.url %>" >
-        <%= image_tag floorplan.url(:thumb) + "/thumb_#{File.basename(floorplan.url, File.extname(floorplan.url))}.png"%>
+        <%= image_tag "#{File.dirname(floorplan.url)}/thumb_#{File.basename(floorplan.url, File.extname(floorplan.url))}.png"%>
         <figcaption><%= File.basename(floorplan.url, File.extname(floorplan.url)) %></figcaption>
       </figure>
     <% end %>

@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.5'
 gem 'bootstrap-sass', '3.3.7'
@@ -8,7 +7,6 @@ gem 'devise'
 gem 'carrierwave',             '1.1.0'
 gem 'mini_magick',             '4.7.0'
 gem 'fog-aws',                 '2.0.0'
-gem 'fog'
 gem 'nokogiri',                '1.8.1'
 gem 'delayed_job_active_record'
 # Use sqlite3 as the database for Active Record
@@ -31,6 +29,7 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'aws-sdk', '~> 3'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

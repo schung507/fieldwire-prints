@@ -21,8 +21,7 @@ class FloorplanUploader < CarrierWave::Uploader::Base
   def enqueue(file)
     puts 'enqueue!!'
     puts self.path
-   
-    Delayed::Job.enqueue VersionJob.new(self.path)
+    Delayed::Job.enqueue VersionJob.new(self.path, model.id)
   end
   
 
