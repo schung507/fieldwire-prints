@@ -8,7 +8,9 @@ gem 'devise'
 gem 'carrierwave',             '1.1.0'
 gem 'mini_magick',             '4.7.0'
 gem 'fog-aws',                 '2.0.0'
+gem 'fog'
 gem 'nokogiri',                '1.8.1'
+gem 'delayed_job_active_record'
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
 # Use SCSS for stylesheets

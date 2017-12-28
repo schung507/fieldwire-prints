@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
     def create
         @project = current_user.projects.build(project_params)
+        
         if @project.save
           redirect_to root_url
         else
