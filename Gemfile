@@ -10,7 +10,6 @@ gem 'fog-aws',                 '2.0.0'
 gem 'nokogiri',                '1.8.1'
 gem 'delayed_job_active_record'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -40,6 +39,7 @@ gem 'aws-sdk', '~> 3'
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
+  gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
