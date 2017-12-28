@@ -1,24 +1,25 @@
+# Fieldwire-Prints
 
-     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
-    '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
-    |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--, 
-    '  '--'\|  |' '-' ''  ''  '\ `-' | .'  /   |  ||  '--'  /|  `---.
-     `-----'`--' `---'  `----'  `---'  `--'    `--'`-------' `------'
-    ----------------------------------------------------------------- 
+### Assumptions
 
+ * User will upload floorplans of type jpeg
+ * Project is created at once by uploading all the floorplans at once (cannot edit project)
 
-Welcome to your Rails project on Cloud9 IDE!
+### Libraries used
 
-To get started, just do the following:
+ * [Carrierwave](https://github.com/carrierwaveuploader/carrierwave) for image management
+ * [Delayed::Job](https://github.com/collectiveidea/delayed_job) to run background image processing
+ 
+### Features
 
-1. Run the project with the "Run Project" button in the menu bar on top of the IDE.
-2. Preview your new app by clicking on the URL that appears in the Run panel below (https://HOSTNAME/).
+ * Users can create account
+ * User can upload projects
+ * User can delete projects
+ * Image processing is asynchronous! Thumbnails in the project page show up later once processing is done
+ * Images are uploaded to S3 in the form ( img.jpg, thumb_img.png, large_png_img.jpg)
 
-Happy coding!
-The Cloud9 IDE team
+### Features to add 
 
-
-## Support & Documentation
-
-Visit http://docs.c9.io for support, or to learn more about using Cloud9 IDE. 
-To watch some training videos, visit http://www.youtube.com/user/c9ide
+ * Users can delete account or edit it
+ * User can edit projects
+ * Drag and drop/better UI interface
