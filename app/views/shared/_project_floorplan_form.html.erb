@@ -1,13 +1,15 @@
 <div class="col-md-6 col-md-offset-3">
     <h1>Add a project!</h1>
-    <%= form_for(@project, html: { multipart: true }) do |f| %>
+    <%= form_for [@project, @floorplan ] do |f| %>
       
         <p>Project Name</p>
         <%= f.text_field :name%>
       
-        <%= f.label :floorplans %>
-        <%= f.file_field :floorplans, multiple: true %>
-      
+       
+        <p>Floorplans</p>
+        <%= f.file_field :blueprints, multiple: true %>
+
+          
       <%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>
 </div>

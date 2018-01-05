@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171227225941) do
+ActiveRecord::Schema.define(version: 20180103061021) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -29,11 +29,20 @@ ActiveRecord::Schema.define(version: 20171227225941) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
+  create_table "floorplans", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "versions"
+    t.integer  "project_id"
+    t.string   "blueprint"
+  end
+
+  add_index "floorplans", ["project_id"], name: "index_floorplans_on_project_id"
+
   create_table "projects", force: :cascade do |t|
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "floorplans"
     t.string   "name"
   end
 

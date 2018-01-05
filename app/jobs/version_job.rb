@@ -5,7 +5,7 @@ class VersionJob < Struct.new(:floorplan, :model_id)
 
   def perform
       m = DummyModel.new(model_id)
-      version_uploader = FloorplanVersionUploader.new(m, nil)
+      version_uploader = FloorplanVersionUploader.new(m, :versions)
       s3 = Aws::S3::Client.new(
         access_key_id: ENV['S3_ACCESS_KEY'],
         secret_access_key: ENV['S3_SECRET_KEY'],
