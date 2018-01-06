@@ -1,5 +1,6 @@
 class Project < ActiveRecord::Base
     belongs_to :user
     validates :user_id, presence: true
-    has_many :floorplans, :class_name => "Floorplan"
+    has_many :floorplans
+    accepts_nested_attributes_for :floorplans
 end
