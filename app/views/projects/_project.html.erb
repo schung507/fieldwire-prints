@@ -5,7 +5,11 @@
     <% project.floorplans.each do |floorplan| %>
       <figure style="display: inline-block">
         <a href="<%= floorplan.blueprint.url %>" >
-        <%= image_tag floorplan.versions["thumb"]["url"] %>
+        <% if floorplan.versions.nil? %>
+          <%= image_tag "/placeholder_thumb.png", size: "100x100" %>
+        <% else %>
+          <%= image_tag floorplan.versions["thumb"]["url"] %>
+        <% end %>
         <figcaption><%= File.basename(floorplan.blueprint.url, File.extname(floorplan.blueprint.url)) %></figcaption>
       </figure>
     <% end %>
