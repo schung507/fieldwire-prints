@@ -1,3 +1,2 @@
 class FloorplansController < ApplicationController
-  
 end

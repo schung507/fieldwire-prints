@@ -10,7 +10,7 @@ class FloorplanVersionUploader < CarrierWave::Uploader::Base
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
   def store_dir
-    "uploads/project/floorplans/#{model.id}"
+    "uploads/floorplan/blueprint/#{model.id}"
   end
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
@@ -39,9 +39,9 @@ class FloorplanVersionUploader < CarrierWave::Uploader::Base
   version :thumb do
     process :resize_to_fill => [100, 100]
     process :convert => 'png'
-    def full_filename(for_file)
-      "thumb_#{File.basename(original_filename,File.extname(original_filename))}.png" if original_filename.present?
-    end 
+    # def full_filename(for_file)
+    #   "thumb_#{File.basename(original_filename,File.extname(original_filename))}.png" if original_filename.present?
+    # end 
   end
   
   # Add a white list of extensions which are allowed to be uploaded.
@@ -53,7 +53,7 @@ class FloorplanVersionUploader < CarrierWave::Uploader::Base
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
   def filename
-    'large_png_' + super.chomp(File.extname(super)) + '.png' if original_filename.present?
+    super.chomp(File.extname(super)) + '.png' if original_filename.present?
   end
 
 end

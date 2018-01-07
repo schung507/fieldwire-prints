@@ -4,9 +4,9 @@
    
     <% project.floorplans.each do |floorplan| %>
       <figure style="display: inline-block">
-        <a href="<%= floorplan.url %>" >
-        <%= image_tag floorplan.versions %>
-        <figcaption><%= File.basename(floorplan.url, File.extname(floorplan.url)) %></figcaption>
+        <a href="<%= floorplan.blueprint.url %>" >
+        <%= image_tag floorplan.versions["thumb"]["url"] %>
+        <figcaption><%= File.basename(floorplan.blueprint.url, File.extname(floorplan.blueprint.url)) %></figcaption>
       </figure>
     <% end %>
   </span>

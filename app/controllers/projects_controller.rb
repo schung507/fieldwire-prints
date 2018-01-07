@@ -2,12 +2,16 @@ class ProjectsController < ApplicationController
 
   def create
       @project = current_user.projects.build(project_params)
+      
       if @project.save
-   
+        params[:floorplans]['blueprint'].each do |a|
+          @floorplan = @project.floorplans.create!(:blueprint => a, :project_id => @project.id)
+        end
         redirect_to root_url
       else
         render 'users/show'
       end
+      
   end
 
   def destroy
@@ -26,7 +30,7 @@ class ProjectsController < ApplicationController
   private
 
   def project_params
-    params.require(:project).permit(:name, floorplans_attributes: [:blueprint, :project_id])
+    params.require(:project).permit(:name, floorplans_attributes: [:id, :project_id, :blueprint])
   end
 
 end
