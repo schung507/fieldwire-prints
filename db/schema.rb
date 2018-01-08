@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180103061021) do
+ActiveRecord::Schema.define(version: 20180108224053) do
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -32,9 +32,7 @@ ActiveRecord::Schema.define(version: 20180103061021) do
   create_table "floorplans", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string   "versions"
     t.integer  "project_id"
-    t.string   "blueprint"
   end
 
   add_index "floorplans", ["project_id"], name: "index_floorplans_on_project_id"
@@ -57,5 +55,17 @@ ActiveRecord::Schema.define(version: 20180103061021) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+
+  create_table "versions", force: :cascade do |t|
+    t.string   "blueprint"
+    t.integer  "version_num"
+    t.string   "versions"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.integer  "floorplan_id"
+    t.string   "message"
+  end
+
+  add_index "versions", ["floorplan_id"], name: "index_versions_on_floorplan_id"
 
 end

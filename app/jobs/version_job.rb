@@ -1,10 +1,8 @@
 require 'aws-sdk'
 
 class VersionJob < Struct.new(:floorplan, :model_id)
-  DummyModel = Struct.new(:id)
-
   def perform
-      m = Floorplan.find(model_id)
+      m = Version.find(model_id)
       version_uploader = FloorplanVersionUploader.new(m, :versions)  
       # s3 = Aws::S3::Client.new(
       #   access_key_id: ENV['S3_ACCESS_KEY'],

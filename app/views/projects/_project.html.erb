@@ -1,17 +1,34 @@
 <li id="project-<%= project.id %>">
+  <section class="floorplan_form">
+        <%= render 'shared/floorplan_form', id: project.id %>
+  </section>
   <span class="content">
-    <p><%= project.name %> | <%= link_to "Delete", project, method: :delete, data: { confirm: "You sure?" } %></p>
+    <h1><%= project.name %> | <%= link_to "Delete", project, method: :delete, data: { confirm: "You sure?" } %></h1>
    
     <% project.floorplans.each do |floorplan| %>
-      <figure style="display: inline-block">
-        <a href="<%= floorplan.blueprint.url %>" >
-        <% if floorplan.versions.nil? %>
-          <%= image_tag "/placeholder_thumb.png", size: "100x100" %>
-        <% else %>
-          <%= image_tag floorplan.versions["thumb"]["url"] %>
-        <% end %>
-        <figcaption><%= File.basename(floorplan.blueprint.url, File.extname(floorplan.blueprint.url)) %></figcaption>
-      </figure>
+      <% if floorplan.versions.count > 0  %>
+        <section class="version_form">
+          <%= render 'shared/version_form', id: floorplan.id %>
+        </section> 
+      <% end %>
+      <% floorplan.versions.each do |version| %>
+        <figure style="display: inline-block">
+          <a href="<%= version.blueprint.url %>">
+            <% if version.versions.nil? %>
+              <%= image_tag "/placeholder_thumb.png", size: "100x100" %>
+            <% else %>
+              <%= image_tag version.versions["thumb"]["url"] %>
+            <% end %> 
+          </a>
+          <% if !version.message.blank? %>
+            <%= version.message %>
+          <% end %>
+          <%= form_for version do |f|%>
+            <%= f.text_field :version_num %>
+          <% end %>
+          <%= link_to "Delete", version, method: :delete, data: { confirm: "You sure?" } %>
+      <% end %>
+     
     <% end %>
   </span>
 </li>

@@ -2,11 +2,8 @@ class ProjectsController < ApplicationController
 
   def create
       @project = current_user.projects.build(project_params)
-      
+      @floorplan = @project.floorplans.build
       if @project.save
-        params[:floorplans]['blueprint'].each do |a|
-          @floorplan = @project.floorplans.create!(:blueprint => a, :project_id => @project.id)
-        end
         redirect_to root_url
       else
         render 'users/show'
@@ -25,12 +22,14 @@ class ProjectsController < ApplicationController
   def show
       @user = User.find_by_id(params[:id])
       @projects = @user.projects
+      @floorpan = Floorplan.new
+      @version = Version.new
   end
   
   private
 
   def project_params
-    params.require(:project).permit(:name, floorplans_attributes: [:id, :project_id, :blueprint])
+    params.require(:project).permit(:name)
   end
 
 end

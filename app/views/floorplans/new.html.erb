@@ -1,0 +1,12 @@
+<div class="col-md-6 col-md-offset-3">
+    <h1>Add Floorplans!</h1>
+    <%= form_for @floorplan do |f| %>
+        
+        <%= f.fields_for :blueprint, @floorplan.blueprint.build do |ff| %>
+	        <p>Floorplans</p>
+	        <%= ff.file_field :blueprint, multiple: true, name: "versions[blueprint][]" %>
+	    <% end %>
+          
+      	<%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+</div>

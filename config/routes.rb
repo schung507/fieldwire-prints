@@ -11,5 +11,6 @@ Rails.application.routes.draw do
   
   resources :users
   resources :projects, :only => [:create,:destroy]
-  resources :floorplans
+  resources :floorplans, :only => [:create, :update, :destroy]
+  resources :versions
 end

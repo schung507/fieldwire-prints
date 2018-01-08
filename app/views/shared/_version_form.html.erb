@@ -1,0 +1,9 @@
+<div>
+    <p>Add Versions!</p>
+    <%= form_for @version do |f| %>
+        <%= f.hidden_field :floorplan_id,:value => id %>
+        <%= f.file_field :blueprint %>
+        <%= f.text_field :message %>
+      	<%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+</div>

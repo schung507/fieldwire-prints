@@ -1,0 +1,12 @@
+<div class="col-md-6">
+    <p>Add Floorplans!</p>
+    <%= form_for @floorplan do |f| %>
+        <%= f.hidden_field :project_id,:value => id %>
+        <%= f.fields_for :versions, @floorplan.versions.build do |ff| %>
+	        <p>Floorplans</p>
+	        <%= ff.file_field :blueprint, multiple: true, name: "versions[blueprint][]" %>
+	    <% end %>
+          
+      	<%= f.submit "Submit", class: "btn btn-primary" %>
+    <% end %>
+</div>

@@ -4,11 +4,6 @@
       
         <p>Project Name</p>
         <%= f.text_field :name%>
-      
-        <%= f.fields_for :floorplans, @project.floorplans.build do |ff| %>
-	        <p>Floorplans</p>
-	        <%= ff.file_field :blueprint, multiple: true, name: "floorplans[blueprint][]" %>
-	    <% end %>
           
       	<%= f.submit "Submit", class: "btn btn-primary" %>
     <% end %>

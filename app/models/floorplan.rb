@@ -1,6 +1,5 @@
 class Floorplan < ActiveRecord::Base
     belongs_to :project
-    mount_uploader :blueprint, FloorplanUploader
-    serialize :blueprint, JSON # If you use SQLite, add this line.
-    serialize :versions, JSON
+    has_many :versions, dependent: :destroy
+    accepts_nested_attributes_for :versions
 end

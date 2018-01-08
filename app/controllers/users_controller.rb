@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @projects = @user.projects
+    @floorplan = Floorplan.new
+    @version = Version.new
   end
   
   def create
